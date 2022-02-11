@@ -80,3 +80,5 @@ while len(TEAM_NAMES) > 0:
     second_team = TEAM_NAMES.pop(NUM_WINS.index(min(NUM_WINS)))
     NUM_WINS.remove(min(NUM_WINS))
     print(f'Home: {first_team} VS AWAY: {second_team}')    
+    
+print('Finished code!')
