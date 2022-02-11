@@ -29,7 +29,6 @@ Output: (Tournament Game Generator)
     _Second most wins vs second least wins ...
     _etc
     _Same wins --> can choose any appropriate team
-    
 """
 
 # Input number of teams in tournament (>2)
@@ -49,7 +48,7 @@ for num in range(1, TEAM_NUM + 1):
         print('Team names must have at most 2 words, try again.')
         team_name = input(f'Enter the name for team #{str(num)}: ')
     TEAM_NAMES.append(team_name)
-
+    #print(TEAM_NAMES)
 # Input number of team games:    
 NUM_GAMES = int(input("Enter the number of games played by each team: "))
 while NUM_GAMES < (TEAM_NUM - 1):
@@ -69,14 +68,15 @@ for team_name in TEAM_NAMES:
         print("The minimum number of wins is 0, try again.")
         num_wins = int(input(f"Enter the number of wins Team {team_name} had: "))
     NUM_WINS.append(num_wins)
-
+    #print(NUM_WINS)
 print('Generating the games to be played in the first round of the tournament...')
 time.sleep(2)
 
-# use while loop to destructively loop over dictionary and return 
+# use while loop to destructively loop over list and return 
     # teams playing
-
 while len(TEAM_NAMES) > 0:
-    first_team =  TEAM_NAMES.pop(TEAM_NAMES.index(max(NUM_WINS)))
-    second_team = TEAM_NAMES.pop(TEAM_NAMES.index(min(NUM_WINS)))
+    first_team =  TEAM_NAMES.pop(NUM_WINS.index(max(NUM_WINS)))
+    NUM_WINS.remove(max(NUM_WINS))
+    second_team = TEAM_NAMES.pop(NUM_WINS.index(min(NUM_WINS)))
+    NUM_WINS.remove(min(NUM_WINS))
     print(f'Home: {first_team} VS AWAY: {second_team}')    
